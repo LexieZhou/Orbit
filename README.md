@@ -181,3 +181,6 @@ To replace the mock auth with Clerk:
 2. Wrap the root layout with `<ClerkProvider>`
 3. Replace `MOCK_USER` in `lib/mock-auth.ts` with `currentUser()` from Clerk
 4. Add middleware for protected routes
+
+## Presentation
+https://docs.google.com/presentation/d/1cYMQHt2GMwanb4vJCuu3yZgVp3sUWnM_uoONESgBMzw/edit?usp=sharing
