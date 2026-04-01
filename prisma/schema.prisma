@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum RelationshipType {
+  friend
+  family
+  romantic
+  coworker
+  mentor
+  other
+}
+
+enum ActivityType {
+  coffee
+  dinner
+  chat
+  call
+  work_meeting
+  trip
+  date
+  event
+}
+
+enum Mood {
+  happy
+  relaxed
+  neutral
+  awkward
+  tired
+  conflict
+}
+
+enum InitiatedBy {
+  me
+  them
+  mutual
+}
+
+enum TrendDirection {
+  up
+  steady
+  down
+}
+
+model Person {
+  id               String           @id @default(cuid())
+  name             String
+  avatarUrl        String?
+  relationshipType RelationshipType @default(other)
+  notes            String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  activities         Activity[]
+  relationshipInsight RelationshipInsight?
+
+  @@map("persons")
+}
+
+model Activity {
+  id           String       @id @default(cuid())
+  personId     String
+  activityType ActivityType
+  date         DateTime
+  locationName String?
+  latitude     Float?
+  longitude    Float?
+  mood         Mood         @default(neutral)
+  initiatedBy  InitiatedBy  @default(mutual)
+  notes        String?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@index([personId])
+  @@index([date])
+  @@map("activities")
+}
+
+model RelationshipInsight {
+  id                  String         @id @default(cuid())
+  personId            String         @unique
+  closenessScore      Float          @default(0)
+  lastInteractionDate DateTime?
+  interactionCount30d Int            @default(0)
+  interactionCount90d Int            @default(0)
+  dominantMood        Mood?
+  initiativeBalance   Float          @default(0) // -1 (all them) to +1 (all me), 0 = balanced
+  trendDirection      TrendDirection @default(steady)
+  nextReminderAt      DateTime?
+  updatedAt           DateTime       @updatedAt
+
+  person Person @relation(fields: [personId], references: [id], onDelete: Cascade)
+
+  @@map("relationship_insights")
+}
