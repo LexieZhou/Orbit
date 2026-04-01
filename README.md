@@ -8,6 +8,7 @@ A polished full-stack web app for tracking meaningful interactions with people y
 Jinya Jiang, Keqian Wang, Yijia Tang, Zihan Zhou
 
 ## Features
+<img width="1470" height="801" alt="Screenshot 2026-03-31 at 6 45 25 PM" src="https://github.com/user-attachments/assets/5c5e1cd6-cf0a-4e05-bd7f-5c21f1651625" />
 
 - **Dashboard** — activity feed, relationship strength overview, reminder alerts, weekly trend chart
 - **People** — browseable list with relationship-type filtering and closeness scores
@@ -16,6 +17,7 @@ Jinya Jiang, Keqian Wang, Yijia Tang, Zihan Zhou
 - **Relationship Graph** — interactive network visualization with React Flow; edge thickness = closeness
 - **Trends & Insights** — monthly frequency charts, closeness trend lines, growing/fading relationship flags
 - **Reminders** — smart, context-aware reconnect suggestions based on interaction history
+
 
 ---
 
