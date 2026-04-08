@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { UserPlus, Search, X } from "lucide-react";
 import { PersonCard } from "@/components/people/PersonCard";
 import { Button } from "@/components/ui/button";
