@@ -45,12 +45,8 @@ export default function PeoplePage() {
       relationshipType: form.relationshipType,
       notes: form.notes || null,
       avatarUrl: null,
-      birthday: null,
-      location: null,
-      occupation: null,
       createdAt: new Date(),
       updatedAt: new Date(),
-      userId: "user-1",
       relationshipInsight: null,
     };
     setPeople((prev) => [newPerson, ...prev]);
